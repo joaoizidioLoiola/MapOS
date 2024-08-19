@@ -505,7 +505,11 @@ $totalProdutos = 0;
                                 <tr>
                                     <td colspan="5">
                                         <strong>Termo de Garantia: </strong><br>
-                                        <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
+                                        <div class="dados">
+                                            <div>
+                                                <?= htmlspecialchars_decode($result->textoGarantia) ?>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php  } ?>
