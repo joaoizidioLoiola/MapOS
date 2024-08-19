@@ -499,18 +499,19 @@ $totalProdutos = 0;
                         <span>Data inicial: <b><?= date('d/m/Y', strtotime($result->dataInicial)) ?></b></span>
                         <span>ORDEM DE SERVIÇO <b>#<?= str_pad($result->idOs, 4, 0, STR_PAD_LEFT) ?></b></span>
                         <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
-                    </div>
-                    <div class="detalhes">
 
-                        <?php if ($result->garantias_id != null) { ?>
-                            <tr>
-                                <td colspan="5">
-                                    <strong>Termo de Garantia: </strong><br>
-                                    <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                        <div class="ordemS">
+                            <?php if ($result->garantias_id != null) { ?>
+                                <tr>
+                                    <td colspan="5">
+                                        <strong>Termo de Garantia: </strong><br>
+                                        <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
+                                    </td>
+                                </tr>
+                            <?php  } ?>
+                        </div>
                     </div>
+
                     <div class="assinaturas">
                         <span>Assinatura do cliente</span>
                         <span>Assinatura do técnico</span>
