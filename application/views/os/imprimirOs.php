@@ -251,35 +251,35 @@ $totalProdutos = 0;
                     <span>Data inicial: <b><?= date('d/m/Y', strtotime($result->dataInicial)) ?></b></span>
                     <span>ORDEM DE SERVIÇO <b>#<?= str_pad($result->idOs, 4, 0, STR_PAD_LEFT) ?></b></span>
                     <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
+                    <div class="assinaturas">
+                        <!-- Adicionando o termo de garantia -->
+                        <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 100%; padding-left: 0">
+                                            <ul>
+                                                <li>
+                                                    <span>
+                                                        <h5 class="text-center">Termo de Garantia</h5>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%; padding-left: 0">
+                                            <ul>
+                                                <li>
+                                                    <span><?php echo htmlspecialchars_decode($osGarantia->textoGarantia) ?></span><br />
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <?php } ?>
                 </div>
-                <div class="assinaturas">
-                    <!-- Adicionando o termo de garantia -->
-                    <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 100%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <span>
-                                                    <h5 class="text-center">Termo de Garantia</h5>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 100%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <span><?php echo htmlspecialchars_decode($osGarantia->textoGarantia) ?></span><br />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    <?php } ?>
                 </div>
             </footer>
         </div>
