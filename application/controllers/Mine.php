@@ -240,10 +240,10 @@ class Mine extends CI_Controller
                 // Verificar credenciais do usuário
                 if (password_verify($password, $cliente->senha)) {
                     $session_mine_data = [
-                        'nome' => $cliente->nomeCliente, 
-                        'cliente_id' => $cliente->idClientes, 
-                        'email' => $cliente->email, 
-                        'conectado' => true, 
+                        'nome' => $cliente->nomeCliente,
+                        'cliente_id' => $cliente->idClientes,
+                        'email' => $cliente->email,
+                        'conectado' => true,
                         'isCliente' => true
                     ];
                     $this->session->set_userdata($session_mine_data);
@@ -624,13 +624,11 @@ class Mine extends CI_Controller
     public function gerarPagamentoGerencianetBoleto()
     {
         print_r(json_encode(['code' => 4001, 'error' => 'Erro interno', 'errorDescription' => 'Cobrança não pode ser gerada pelo lado do cliente']));
-
     }
 
     public function gerarPagamentoGerencianetLink()
     {
         print_r(json_encode(['code' => 4001, 'error' => 'Erro interno', 'errorDescription' => 'Cobrança não pode ser gerada pelo lado do cliente']));
-
     }
 
     public function imprimirOs($id = null)
@@ -647,6 +645,9 @@ class Mine extends CI_Controller
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $data['emitente'] = $this->mapos_model->getEmitente();
+
+        // Adicionando a busca pelo termo de garantia
+        $data['osGarantia'] = $this->os_model->getGarantiaByOsId($this->uri->segment(3));
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -666,8 +667,8 @@ class Mine extends CI_Controller
         $data['custom_error'] = '';
         $this->CI = &get_instance();
         $this->CI->load->database();
-        
-        
+
+
         $this->load->model('mapos_model');
         $this->load->model('os_model');
         $data['pix_key'] = $this->CI->db->get_where('configuracoes', ['config' => 'pix_key'])->row_object()->valor;
@@ -678,7 +679,7 @@ class Mine extends CI_Controller
             $data['emitente']
         );
         $data['chaveFormatada'] = $this->formatarChave($data['pix_key']);
-        
+
         $this->load->model('vendas_model');
         $data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));

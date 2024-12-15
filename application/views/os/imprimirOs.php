@@ -253,8 +253,48 @@ $totalProdutos = 0;
                     <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
                 </div>
                 <div class="assinaturas">
-                    <span>Assinatura do cliente</span>
-                    <span>Assinatura do técnico</span>
+
+                    <table class="table">
+                        <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 100%; padding-left: 0">
+                                        <ul>
+                                            <li>
+                                                <span>
+                                                    <h5 class="text-center">Termo de Garantia</h5>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%; padding-left: 0">
+                                        <ul>
+                                            <li>
+                                                <span><?php echo htmlspecialchars_decode($osGarantia->textoGarantia) ?></span><br />
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        <?php } ?>
+                    </table>
+                    <table class="table table-bordered table-condensed">
+                        <tbody>
+                            <tr>
+                                <td>Data
+                                    <hr>
+                                </td>
+                                <td>Assinatura do Cliente
+                                    <hr>
+                                </td>
+                                <td>Assinatura do Técnico Responsável
+                                    <hr>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </footer>
         </div>
