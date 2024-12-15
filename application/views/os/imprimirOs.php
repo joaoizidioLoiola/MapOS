@@ -247,39 +247,29 @@ $totalProdutos = 0;
                 <?php endif; ?>
             </section>
             <footer>
-                <div class="detalhes">
-                    <span>Data inicial: <b><?= date('d/m/Y', strtotime($result->dataInicial)) ?></b></span>
-                    <span>ORDEM DE SERVIÇO <b>#<?= str_pad($result->idOs, 4, 0, STR_PAD_LEFT) ?></b></span>
-                    <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
-                </div>
                 <div class="assinaturas">
-                    <!-- Adicionando o termo de garantia -->
                     <?php if ($result->garantias_id != null) { ?>
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td style="width: 100%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <span>
-                                                    <h5 class="text-center">Termo de Garantia</h5>
-                                                </span>
-                                            </li>
-                                        </ul>
+                                    <td style="width: 100%; padding-left: 0;">
+                                        <h6 class="text-center">Termo de Garantia</h6>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 100%; padding-left: 0">
-                                        <ul>
-                                            <li>
-                                                <strong>Termo de Garantia: </strong><br><?php echo htmlspecialchars_decode($result->textoGarantia) ?>
-                                            </li>
-                                        </ul>
+                                    <td style="width: 100%; padding-left: 0; text-align: justify; margin-bottom: 0px;">
+                                        <span>
+                                            <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
+                                        </span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     <?php } ?>
+                </div>
+                <div class="assinaturas" style="margin-top: 0px;">
+                    <span>Assinatura do cliente</span>&nbsp;&nbsp;
+                    <span>Assinatura do técnico</span>
                 </div>
             </footer>
         </div>
@@ -520,30 +510,7 @@ $totalProdutos = 0;
                     <?php endif; ?>
                 </section>
                 <footer>
-                    <div class="assinaturas">
-                        <h2>aqui</h2>
-                        <?php if ($result->garantias_id != null) { ?>
-                            <table class="table">
-                                <tbody>
-                                    <span>
-                                        <h6 class="text-center">
-                                            Termo de Garantia
-                                        </h6>
-                                    </span>
-                                    <tr>
-                                        <td style="width: 100%; padding-left: 0;">
-                                            <span>
-                                                <strong>Termo de Garantia: </strong><br><?php echo htmlspecialchars_decode($result->textoGarantia) ?>
-                                            </span>
-                                        </td>
-                                </tbody>
-                            </table>
-                        <?php  } ?>
-                    </div>
-                    <div class="table table-bordered table-condensed">
-                        <span>Assinatura do cliente</span>
-                        <span>Assinatura do técnico</span>
-                    </div>
+
                 </footer>
             </div>
         <?php endif; ?>

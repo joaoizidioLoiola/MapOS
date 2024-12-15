@@ -211,6 +211,10 @@ footer .assinaturas span {
   margin-top: 55px;
 }
 
+footer .assinaturas div {
+  text-align: justify;
+  margin-top: 0px;
+}
 #anexos {
   display: none;
   page-break-before: always;
