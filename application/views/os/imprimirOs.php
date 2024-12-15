@@ -520,21 +520,29 @@ $totalProdutos = 0;
                     <?php endif; ?>
                 </section>
                 <footer>
-                    <div class="detalhes">
-                        <div class="ordemS">
-                            <?php if ($result->garantias_id != null) { ?>
-                                <tr>
-                                    <td colspan="5">
-                                        <strong>Termo de Garantia: </strong><br>
-                                        <div class="dados">
-                                            <div>
-                                                <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php  } ?>
-                        </div>
+                    <div class="assinaturas">
+                        AQUI
+                        <?php if ($result->garantias_id != null) { ?>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 100%; padding-left: 0;">
+                                            <span>
+                                                <h6 class="text-center">
+                                                    Termo de Garantia
+                                                </h6>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%; padding-left: 0;">
+                                            <span>
+                                                <strong>Termo de Garantia: </strong><br><?php echo htmlspecialchars_decode($result->textoGarantia) ?>
+                                            </span>
+                                        </td>
+                                </tbody>
+                            </table>
+                        <?php  } ?>
                     </div>
                     <div class="assinaturas">
                         <span>Assinatura do cliente</span>
