@@ -253,9 +253,9 @@ $totalProdutos = 0;
                     <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
                 </div>
                 <div class="assinaturas">
-
-                    <table class="table">
-                        <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
+                    <!-- Adicionando o termo de garantia -->
+                    <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <td style="width: 100%; padding-left: 0">
@@ -278,23 +278,8 @@ $totalProdutos = 0;
                                     </td>
                                 </tr>
                             </tbody>
-                        <?php } ?>
-                    </table>
-                    <table class="table table-bordered table-condensed">
-                        <tbody>
-                            <tr>
-                                <td>Data
-                                    <hr>
-                                </td>
-                                <td>Assinatura do Cliente
-                                    <hr>
-                                </td>
-                                <td>Assinatura do Técnico Responsável
-                                    <hr>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        </table>
+                    <?php } ?>
                 </div>
             </footer>
         </div>

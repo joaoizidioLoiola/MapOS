@@ -648,6 +648,8 @@ class Mine extends CI_Controller
 
         // Adicionando a busca pelo termo de garantia
         $data['osGarantia'] = $this->os_model->getGarantiaByOsId($this->uri->segment(3));
+        // Adicionando a busca pelo termo de garantia
+    $data['osGarantia'] = $this->os_model->getGarantiaByOsId($id);
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
