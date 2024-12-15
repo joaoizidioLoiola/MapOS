@@ -525,19 +525,14 @@ $totalProdutos = 0;
                         <?php if ($result->garantias_id != null) { ?>
                             <table class="table">
                                 <tbody>
+                                    <span>
+                                        <h6 class="text-center">
+                                            Termo de Garantia
+                                        </h6>
+                                    </span>
                                     <tr>
                                         <td style="width: 100%; padding-left: 0;">
                                             <span>
-                                                <h6 class="text-center">
-                                                    Termo de Garantia
-                                                </h6>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 100%; padding-left: 0;">
-                                            <span>
-                                                <h1>Aquiiii</h1>
                                                 <strong>Termo de Garantia: </strong><br><?php echo htmlspecialchars_decode($result->textoGarantia) ?>
                                             </span>
                                         </td>
