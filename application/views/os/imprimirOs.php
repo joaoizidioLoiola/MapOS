@@ -252,6 +252,7 @@ $totalProdutos = 0;
                     <span>ORDEM DE SERVIÇO <b>#<?= str_pad($result->idOs, 4, 0, STR_PAD_LEFT) ?></b></span>
                     <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
                     <div class="assinaturas">
+                        <h2>Aqui</h2>
                         <!-- Adicionando o termo de garantia -->
                         <?php if (isset($osGarantia) && $osGarantia->garantias_id != null) { ?>
                             <table class="table">
@@ -279,7 +280,7 @@ $totalProdutos = 0;
                                 </tbody>
                             </table>
                         <?php } ?>
-                </div>
+                    </div>
                 </div>
             </footer>
         </div>
