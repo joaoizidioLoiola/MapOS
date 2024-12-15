@@ -52,9 +52,9 @@ class Os extends MY_Controller
 
         $this->data['configuration']['base_url'] = site_url('os/gerenciar/');
         $this->data['configuration']['total_rows'] = $this->os_model->count('os');
-        if(count($where_array) > 0) {
+        if (count($where_array) > 0) {
             $this->data['configuration']['suffix'] = "?pesquisa={$pesquisa}&status={$status}&data={$inputDe}&data2={$inputAte}";
-            $this->data['configuration']['first_url'] = base_url("index.php/os/gerenciar")."\?pesquisa={$pesquisa}&status={$status}&data={$inputDe}&data2={$inputAte}";
+            $this->data['configuration']['first_url'] = base_url("index.php/os/gerenciar") . "\?pesquisa={$pesquisa}&status={$status}&data={$inputDe}&data2={$inputAte}";
         }
 
         $this->pagination->initialize($this->data['configuration']);
@@ -427,11 +427,16 @@ class Os extends MY_Controller
 
         $this->data['custom_error'] = '';
         $this->load->model('mapos_model');
+        $this->load->model('os_model');
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
         $this->data['emitente'] = $this->mapos_model->getEmitente();
+
+        // Adicionando a busca pelo termo de garantia
+        $this->data['osGarantia'] = $this->os_model->getGarantiaByOsId($this->uri->segment(3));
+
         if ($this->data['configuration']['pix_key']) {
             $this->data['qrCode'] = $this->os_model->getQrCode(
                 $this->uri->segment(3),
@@ -440,10 +445,16 @@ class Os extends MY_Controller
             );
             $this->data['chaveFormatada'] = $this->formatarChave($this->data['configuration']['pix_key']);
         }
-        
+
         $this->data['imprimirAnexo'] = isset($_ENV['IMPRIMIR_ANEXOS']) ? (filter_var($_ENV['IMPRIMIR_ANEXOS'] ?? false, FILTER_VALIDATE_BOOLEAN)) : false;
 
         $this->load->view('os/imprimirOs', $this->data);
+    }
+
+    public function getGarantiaByOsId($id)
+    {
+        $this->db->where('os_id', $id);
+        return $this->db->get('garantias')->row();
     }
 
     public function imprimirTermica()

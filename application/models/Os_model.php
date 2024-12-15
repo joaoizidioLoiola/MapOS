@@ -112,6 +112,12 @@ class Os_model extends CI_Model
 
         return $this->db->get()->row();
     }
+    
+    public function getGarantiaByOsId($id)
+    {
+        $this->db->where('os_id', $id);
+        return $this->db->get('garantias')->row();
+    }
 
     public function getProdutos($id = null)
     {
