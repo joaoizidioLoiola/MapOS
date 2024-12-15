@@ -521,7 +521,7 @@ $totalProdutos = 0;
                 </section>
                 <footer>
                     <div class="assinaturas">
-                        AQUI
+                        <h2>aqui</h2>
                         <?php if ($result->garantias_id != null) { ?>
                             <table class="table">
                                 <tbody>
@@ -537,6 +537,7 @@ $totalProdutos = 0;
                                     <tr>
                                         <td style="width: 100%; padding-left: 0;">
                                             <span>
+                                                <h1>Aquiiii</h1>
                                                 <strong>Termo de Garantia: </strong><br><?php echo htmlspecialchars_decode($result->textoGarantia) ?>
                                             </span>
                                         </td>
@@ -544,7 +545,7 @@ $totalProdutos = 0;
                             </table>
                         <?php  } ?>
                     </div>
-                    <div class="assinaturas">
+                    <div class="table table-bordered table-condensed">
                         <span>Assinatura do cliente</span>
                         <span>Assinatura do técnico</span>
                     </div>
