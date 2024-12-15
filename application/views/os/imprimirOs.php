@@ -521,10 +521,6 @@ $totalProdutos = 0;
                 </section>
                 <footer>
                     <div class="detalhes">
-                        <span>Data inicial: <b><?= date('d/m/Y', strtotime($result->dataInicial)) ?></b></span>
-                        <span>ORDEM DE SERVIÇO <b>#<?= str_pad($result->idOs, 4, 0, STR_PAD_LEFT) ?></b></span>
-                        <span>Data final: <b><?= $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : '' ?></b></span>
-
                         <div class="ordemS">
                             <?php if ($result->garantias_id != null) { ?>
                                 <tr>
@@ -532,7 +528,7 @@ $totalProdutos = 0;
                                         <strong>Termo de Garantia: </strong><br>
                                         <div class="dados">
                                             <div>
-                                                <?= htmlspecialchars_decode($result->textoGarantia) ?>
+                                                <?php echo htmlspecialchars_decode($result->textoGarantia) ?>
                                             </div>
                                         </div>
                                     </td>
@@ -540,7 +536,6 @@ $totalProdutos = 0;
                             <?php  } ?>
                         </div>
                     </div>
-
                     <div class="assinaturas">
                         <span>Assinatura do cliente</span>
                         <span>Assinatura do técnico</span>

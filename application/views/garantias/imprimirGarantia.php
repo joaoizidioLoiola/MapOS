@@ -85,8 +85,9 @@
                                     <?php if ($emitente == null) { ?>
                                         <tr>
                                             <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/mapos/emitente">Configurar</a>
-                                                <<<</td> </tr> <?php
-                                    } else { ?> <tr>
+                                                <<<< /td>
+                                        </tr> <?php
+                                            } else { ?> <tr>
                                             <td style="width: 25%"><img src=" <?php echo $emitente->url_logo; ?> "></td>
                                             <td> <span style="font-size: 20px; ">
                                                     <?php echo $emitente->nome; ?></span> <br />
@@ -96,28 +97,18 @@
                                                     <?php echo $emitente->email . ' - Fone: ' . $emitente->telefone; ?>
                                                 </span>
                                             </td>
-                                            <td style="width: 18%; text-align: center">
-                                                <br /> <br />
-                                                <span>Emissão:
-                                                    <?php echo date('d/m/Y'); ?>
-                                                </span>
-                                            </td>
                                         </tr>
                                     <?php
-                                    } ?>
+                                            } ?>
                                 </tbody>
                             </table>
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td style="width: 50%; padding-left: 0">
-                                            <ul>
-                                                <li>
-                                                    <span>
-                                                        <h5 class="text-center">Termo de Garantia</h5>
-                                                    </span>
-                                                </li>
-                                            </ul>
+                                            <span>
+                                                <h5 class="text-center">Termo de Garantia</h5>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -128,7 +119,6 @@
                                         <td style="width: 100%; padding-left: 0">
                                             <ul>
                                                 <li>
-
                                                     <span><?php echo htmlspecialchars_decode($result->textoGarantia) ?></span><br />
                                                 </li>
                                             </ul>
@@ -136,24 +126,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <table class="table table-bordered table-condensed">
-                                <tbody>
-                                    <tr>
-                                        <td>Data
-                                            <hr>
-                                        </td>
-                                        <td>Assinatura do Cliente
-                                            <hr>
-                                        </td>
-                                        <td>Assinatura do Técnico Responsável
-                                            <hr>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
-
-
+                        <div class="assinaturas">
+                            <span>Assinatura do cliente</span>
+                            <span>Assinatura do técnico</span>
+                        </div>
                     </div>
                 </div>
             </div>
